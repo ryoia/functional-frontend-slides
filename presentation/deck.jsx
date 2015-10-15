@@ -25,17 +25,57 @@ export default class extends React.Component {
           <Heading size={1} fit caps textColor="black">
             Front-end can be more functional
           </Heading>
-          <Text>- Julia Gao @ryoia</Text>
+          <Text>- Julia Gao</Text>
         </Slide>
-        <Slide transition={['slide']} bgColor="white" notes="You can even put notes on your slide. How awesome is that?">
+        <Slide transition={['slide']} bgColor="white">
           <Text>
-            Alright, a brief overview of what functional programming is
+            github.com/ryoia/reactive-conf-slides
           </Text>
+        </Slide>
+        <Slide transition={['slide']} bgColor="white" notes="So I'm gonna do a super quick introduction on functional programming before we dive into how to make frontend more functional">
+          <Appear fid="1">
+            <Heading size={1} caps fit textColor="black">
+              Two Main Concepts on Functional Programming
+            </Heading>
+          </Appear>
+          <Appear fid="2">
+            <Heading size={1} caps fit textColor="black">
+              How to Make Front-End More Functional Using the Tools We Currently Have
+            </Heading>
+          </Appear>
         </Slide>
         <Slide transition={['slide']} bgColor="primary">
           <Heading>
-            Immutable & Stateless 
+            Stateless & Immutable
           </Heading>
+        </Slide>
+        <Slide>
+          <Heading>
+            Stateless (Idempotence)
+          </Heading>
+          <Text>
+            Same argument, same output, regardless of changes outside of that function.
+            Which means, no matter how many times the function is getting called, 
+            the output should be the same with the same parameters
+          </Text>
+        </Slide>
+        <Slide>
+          <Appear>
+            <CodePane
+              lang="javascript"
+              source={require("raw!./abs.example")}
+              margin="20px auto"/>
+          </Appear>
+          <Appear>
+            <Heading>
+              Advantages?
+            </Heading>
+            <Text>
+              - No side effects
+              - Function acts the same whenever you call it
+              - Fewer bugs
+            </Text>
+          </Appear>
         </Slide>
         <Slide transition={['zoom', 'fade']} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
           <CodePane
