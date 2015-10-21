@@ -1,0 +1,8 @@
+function doStuff (a, b, c) {
+  e = ... (calculation that involves other mutable global variables
+           that may be changed by another function)
+
+  a = a + e
+
+  return a + ', ' + b + ', ' + c
+}

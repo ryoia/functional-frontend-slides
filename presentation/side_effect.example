@@ -1,0 +1,22 @@
+var globalVariable = ‘hi’
+
+
+function doStuff(a, b) {
+  console.log(a + ‘, ’ + b + ‘, ’ + globalVariable)
+}
+
+
+function doOtherStuff(name) {
+  globalVariable = ‘hi’ + ‘, ’ + name
+}
+
+
+doStuff(‘Joanne’, ‘Marie’)
+//Joanne, Marie, hi
+
+
+doOtherStuff(‘Julia’)
+
+
+doStuff(‘Joanne’, ‘Marie’)
+//Joanne, Marie, hi, Julia

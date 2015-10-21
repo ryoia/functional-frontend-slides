@@ -61,8 +61,6 @@ export default class extends React.Component {
           <Image height="20%" width="30%" margin="10" src={images.lol}/>
           <Image height="20%" width="30%" margin="10" src={images.mario8}/>
         </Slide>
-        <Slide>
-        </Slide>
         <Slide transition={['slide']} bgColor="white" notes="So I'm gonna do a super quick introduction on functional programming before we dive into how to make frontend more functional">
           <List>
             <ListItem><Appear fid="1">
@@ -109,6 +107,45 @@ export default class extends React.Component {
             </List>
           </Appear>
         </Slide>
+        <Slide notes="Can be due to somebody else changed something somewhere, we don't want that to happen">
+          <Text>When a thing that worked on Friday no longer works on Monday</Text>
+          <Image width="100%" height="100%" src={images.not_working} />
+        </Slide>
+        <Slide
+          notes="The doStuff function here has side effect because the result depends on what the globalVariable is, and globalVariable can be changed by doOtherStuff function. This isn’t what we want because now the outputs are not the same when we pass in the same arguments every time.
+          ">
+          <CodePane
+            lang="javascript"
+            size
+            source={require("raw!./side_effect.example")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide>
+          <CodePane
+            lang="javascript"
+            size
+            source={require("raw!./less_side_effect.example")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide>
+          <Appear><Heading size={6}>Immutable Data Structures</Heading></Appear>
+          <Appear><Image height="500px" src={images.does_not_simply} /></Appear>
+        </Slide>
+        <Slide>
+          <Heading size={6}>ImmutableDataStructures</Heading>
+          <Text>Once assigned, can't be mutated. e.g. 5, "hi"</Text>
+          <Appear>
+            <Text>Why?</Text>
+          </Appear>
+          <Appear>
+            <CodePane
+              lang="javascript"
+              size
+              source={require("raw!./cal_in_fn.example")}
+              margin="20px auto"/>
+          </Appear>
+        </Slide>
+
         <Slide transition={["slide"]} bgDarken={0.75}>
           <Image width="100%" src={images.inefficient}/>
         </Slide>
