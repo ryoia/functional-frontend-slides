@@ -1,0 +1,13 @@
+let nested = Immutable.fromJS({z:{b:{y:[35,2,42]}}});
+
+// {“z": {"b": {“y": [35, 2, 42]}}}
+
+
+nested.set(“z", 4); 
+
+// nested: {"z":{"b":{"y":[35,2,42]}}}
+
+
+var nestedTwo = nested.set(“z", 4); 
+
+// nestedTwo: {“z": 4}

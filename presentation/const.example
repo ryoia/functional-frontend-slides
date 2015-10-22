@@ -1,0 +1,13 @@
+function constExample() {
+  const a = 1;
+  a = 2; // Attempting to override ‘a’ which is a constant
+  
+  console.log('add has a: ' + a);
+}
+
+function add() {
+  const a; // const ‘a’ is initialized to ‘undefined’
+  
+  console.log('add has a: ' + a);
+}
+

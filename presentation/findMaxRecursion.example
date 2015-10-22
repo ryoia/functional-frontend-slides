@@ -1,0 +1,8 @@
+function max (ls, m = 0) {
+  if (ls.length === 0) {
+    return m
+  } else {
+    const _m = ls[0] < m ? m : ls[0]
+    return max(ls.slice(1), _m)
+  }
+}

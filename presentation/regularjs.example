@@ -1,0 +1,11 @@
+let regularMap = new Map();
+
+regularMap.set(1, “hi”);
+// Map {1 => "hi"}
+
+regularMap.set(2, “bye”);
+// Map {1 => "hi", 2 => "bye"}
+
+console.log(regularMap.size); 
+// 2
+

@@ -1,0 +1,4 @@
+(defn reagent-parent []
+  [:div
+   [:p "I include reagent-component."]
+   [reagent-component]])

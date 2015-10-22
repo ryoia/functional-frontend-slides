@@ -1,0 +1,8 @@
+(defn max [ls]
+  (if (empty? ls)
+    0
+    (let [rls (max (rest ls))]
+      (if (< (first ls) rls)
+        rls
+        (first ls)))))
+

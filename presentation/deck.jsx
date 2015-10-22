@@ -16,6 +16,7 @@ const images = {
   comfort_zone: require('./comfort_zone.png'),
   console_minus: require('./console_minus.png'),
   console_plus: require('./console_plus.png'),
+  copies: require('./copies.png'),
   does_not_simply: require('./does_not_simply.png'),
   expand_comfort: require('./expand_comfort.png'),
   false: require('./false.png'),
@@ -131,7 +132,8 @@ export default class extends React.Component {
           <Appear><Heading size={6}>Immutable Data Structures</Heading></Appear>
           <Appear><Image height="500px" src={images.does_not_simply} /></Appear>
         </Slide>
-        <Slide>
+        <Slide notes="Why immutability is crucial. Think about the function we have, we pass in some parameters, but if they are mutable, we may do something within the function that changes the passed in parameter, so that doesn’t guarantee our results anymore. What would happen if you have a mutable data structure that will be changed in two different threads, the result wouldn’t be consistent and the change being made in the slow thread can be overriden. 
+        ">
           <Heading size={6}>ImmutableDataStructures</Heading>
           <Text>Once assigned, can't be mutated. e.g. 5, "hi"</Text>
           <Appear>
@@ -144,6 +146,173 @@ export default class extends React.Component {
               source={require("raw!./cal_in_fn.example")}
               margin="20px auto"/>
           </Appear>
+        </Slide>
+        <Slide>
+          <Text>How to change this function to use immutable data structures?</Text>
+            <CodePane
+              lang="javascript"
+              size
+              source={require("raw!./findMaxMutable.example")}
+              margin="20px auto"/>
+          <Text>Recursion!</Text>
+        </Slide>
+        <Slide>
+            <CodePane
+              lang="javascript"
+              size
+              source={require("raw!./findMaxRecursion.example")}
+              margin="20px auto"/>
+        </Slide>
+        <Slide>
+          <Heading size={1} fit caps>How to Make Frontend More Functional</Heading>
+        </Slide>
+        <Slide>
+          <Heading size={1} fit caps>Disclaimer</Heading>
+        </Slide>
+        <Slide>
+          <Appear>
+            <Image width="20%" src={images.nullJS} />
+          </Appear>
+          <Appear>
+            <Image width="20%" src={images.nan} />
+          </Appear>
+          <Appear>
+            <Image width="20%" src={images.console_minus} />
+          </Appear>
+          <Appear>
+            <Image width="20%" src={images.console_plus} />
+          </Appear>
+          <Appear>
+            <Image width="20%" src={images.false} />
+          </Appear>
+          <Appear>
+            <Image width="20%" src={images.typeof_nan} />
+          </Appear>
+        </Slide>
+        <Slide>
+          <Image src={images.make_better} />
+        </Slide>
+        <Slide>
+          <Image src={images.make_let} />
+        </Slide>
+        <Slide notes="let and const are block scoped, no more hoisting. const wouldn’t let you change the value, however, like what I said about the disclaimer, this is still javascript, which means some values can be changed.
+        ">
+          <Image src={images.make_const} />
+        </Slide>
+        <Slide notes="let and const are block scoped, no more hoisting. let variables can still be mutated. ">
+          <CodePane
+            lang="javascript"
+            size
+            source={require("raw!./let.example")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide notes="const variables cannot be changed once assigned, they have to be initialized when declared.
+        ">
+          <CodePane
+            lang="javascript"
+            size
+            source={require("raw!./const.example")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide>
+          <Heading size={6}>Libraries/Frameworks that can make front-end more functional</Heading>
+          <List>
+            <ListItem>ImmutableJS with ReactJS</ListItem>
+            <ListItem>ClojureScript</ListItem>
+            <ListItem>PureScript</ListItem>
+            <ListItem>What do you use?</ListItem>
+          </List>
+        </Slide>
+        <Slide notes="This already looks promising since immutability is one of the cores FP has. ImmutableJS provides immutable data structures, so like map, set, list are immutable, which means, you make a data structure every time there is a change.
+        ">
+          <Heading size={1} caps>ImmutableJS</Heading>
+        </Slide>
+        <Slide notes="put copies of powerpoints here. explaining I wanted to make my preparing process immutable as well. so now you may wonder, since I’m making a copy of every time I make a change, this is super heavy and slow. but, immutablejs actually has this persistent data structures, which means they make a copy of the changed items, then link it back to the unchanged things. this is a simplified version of course, if you want to learn more specifics, do look up tries implementation that immutablejs uses. 
+        ">
+          <Image src={images.copies} />
+        </Slide>
+        <Slide>
+          <Heading size={6}>But that's so inefficient!</Heading>
+          <Image src={images.inefficient} />
+        </Slide>
+        <Slide notes="immutablejs uses trie so only copy the changed items instead of the entire list">
+          <Text>Persistent Data Structure HashMap Tries, Vector Tries</Text>
+          <Image src={images.tries} />
+        </Slide>
+        <Slide notes="When I first read this, I was like, this is genius">
+          <Image src={images.clap} />
+        </Slide>
+        <Slide notes="Here's a comparison between regular js and immutablejs">
+          <Layout>
+            <Fill>
+              <CodePane
+                lang="javascript"
+                size
+                source={require("raw!./regularjs.example")}
+                margin="20px auto"/>
+            </Fill>
+            <Fill>
+              <CodePane
+                lang="javascript"
+                size
+                source={require("raw!./immutablejs.example")}
+                margin="20px auto"/>
+            </Fill>
+          </Layout>
+        </Slide>
+        <Slide notes="so let's use immutablejs">
+          <Text>Here's another example</Text>
+          <Appear>
+            <CodePane
+              lang="javascript"
+              size
+              source={require("raw!./nestedImmuJS.example")}
+              margin="20px auto"/>
+          </Appear>
+        </Slide>
+        <Slide notes="Clojure is a dialect of Lisp, and clojurescript is a dialect of Clojure that compiles to javascript. Clojurescript also has immutable data structures, and since it’s a dialect of Lisp, it has Lisp syntax.">
+          <Heading size={1} cap>clojurescript</Heading>
+          <CodePane
+            lang="javascript"
+            size
+            source={require("raw!./clojs.example")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide>
+          <Text>Modular:</Text>
+          <Code>(ns myapp ...</Code>
+          <Code>(ns hello_world.core ...</Code>
+          <Text>Immutable Data Structure: </Text>
+          <Code>
+            (def v [1 2 3]) // v = [1 2 3]
+            (conj v 4) // [1 2 3 4]
+             v // [1 2 3]
+          </Code>
+        </Slide>
+        <Slide notes="Reagent, can write react components in clojurescript">
+          <Heading size={2} cap>reagent</Heading>
+          <CodePane
+            lang="javascript"
+            size
+            source={require("raw!./reagent1.example")}
+            margin="20px auto"/>
+          <CodePane
+            lang="javascript"
+            size
+            source={require("raw!./reagent2.example")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide notes="the intended use of atom is to hold one of Clojure's immutable data structures. And, similar to ref's alter and agent's send, you change the value by applying a function to the old value. This is done in an atomic manner by swap! Internally, swap! reads the current value, applies the function to it, and attempts to compare-and-set it in. Since another thread may have changed the value in the intervening time, it may have to retry, and does so in a spin loop. ">
+          <Image src={images.clojure_atom} /> 
+        </Slide>
+        <Slide notes="Reagent has its own version of atom, which re-renders itself whenever it’s changed by tracking when it is deref’ed. sounds familiar??">
+          <CodePane
+            lang="javascript"
+            size
+            source={require("raw!./reagent_atom.example")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide>
         </Slide>
 
         <Slide transition={["slide"]} bgDarken={0.75}>

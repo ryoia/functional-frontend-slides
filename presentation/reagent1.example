@@ -1,0 +1,6 @@
+(defn reagent-component []
+  [:div
+   [:p ”Welcome to this Reagent app!"]
+   [:p.someclass
+    ”You can " [:strong ”decorate"]
+    [:span {:style {:color "red"}} " with any style "] "text."]])
