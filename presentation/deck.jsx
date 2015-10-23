@@ -1,7 +1,7 @@
 import React from "react/addons";
 
 import {
-  Appear, BlockQuote, Cite, CodePane, Deck, Fill,
+  Appear, BlockQuote, Cite, Code, CodePane, Deck, Fill,
   Heading, Image, Layout, Link, ListItem, List, Quote, Slide, Text
 } from "../src/spectacle";
 
@@ -312,7 +312,26 @@ export default class extends React.Component {
             source={require("raw!./reagent_atom.example")}
             margin="20px auto"/>
         </Slide>
+        <Slide notes="written in Haskell, strongly typed language that compiles to javascript. Hence, everything else is impurescript.">
+          <Heading cap size={2}>Purescript</Heading>
+          <Image src={images.haskell} />
+        </Slide>
         <Slide>
+          <CodePane
+            lang="javascript"
+            size
+            source={require("raw!./purs.example")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide>
+          <Image src={images.comfort_zone} />
+        </Slide>
+        <Slide>
+          <Image src={images.expand_comfort} />
+        </Slide>
+        <Slide>
+          <Text>Thank you!</Text>
+          <Text>Twitter: @ryoia</Text>
         </Slide>
 
         <Slide transition={["slide"]} bgDarken={0.75}>

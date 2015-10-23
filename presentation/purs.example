@@ -1,0 +1,8 @@
+module Hello where
+
+import Control.Monad.Eff.Console (log)
+
+main = log "Hello, World!"
+
+add :: Int -> Int -> Int
+add x y = x + y
