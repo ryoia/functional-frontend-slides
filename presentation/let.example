@@ -15,4 +15,3 @@ function letExample() {
   console.log('add2 has b: ' + b)
 }
 letExample() // 1
-

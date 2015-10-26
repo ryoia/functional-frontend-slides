@@ -21,6 +21,7 @@ const images = {
   expand_comfort: require('./expand_comfort.png'),
   false: require('./false.png'),
   fp: require('./fp.png'),
+  github: require('./github.png'),
   haskell: require('./haskell.png'),
   inefficient: require('./inefficient.gif'),
   lol: require('./lol.png'),
@@ -50,12 +51,14 @@ export default class extends React.Component {
           </Heading>
           <Text>- Julia Gao</Text>
         </Slide>
-        <Slide transition={['slide']} bgColor="white"
-          notes="Who am i...I like astronomy and reactjs and functional programming
-          and video games, so if you are interested in any of those things, I'd like to chat with you">
-          <Heading size={2} textColor="black">
+        <Slide transition={['slide']} bgColor="white">
+          <Heading size={4} textColor="black">
             Who Am I?
           </Heading>
+        </Slide>
+        <Slide bgColor="white"
+          notes="Who am i...I like astronomy and reactjs and functional programming and video games, so if you are interested in any of those things, I'd like to chat with you">
+          <Image height="20%" width="30%" margin="10" src={images.github}/>
           <Image height="20%" width="30%" margin="10" src={images.bigbang}/>
           <Image height="20%" width="30%" margin="10" src={images.reactjs}/>
           <Image height="20%" width="30%" margin="10" src={images.fp}/>
@@ -64,10 +67,10 @@ export default class extends React.Component {
         </Slide>
         <Slide transition={['slide']} bgColor="white" notes="So I'm gonna do a super quick introduction on functional programming before we dive into how to make frontend more functional">
           <List>
-            <ListItem><Appear fid="1">
-              Main Conepts on Functional Programming
+            <ListItem textSize="60"><Appear fid="1">
+              What functional programming is all about
             </Appear></ListItem>
-            <ListItem><Appear fid="2">
+            <ListItem textSize="60"><Appear fid="2">
               How to make our front-end applications more functional using the tools we currently have
             </Appear></ListItem>
           </List>
@@ -77,7 +80,7 @@ export default class extends React.Component {
           <Image width="100%" height="100%" src={images.oo_fp_patterns} />
         </Slide>
         <Slide transition={['slide']} bgColor="white">
-          <Heading>
+          <Heading textColor="black">
             Stateless & Immutable
           </Heading>
         </Slide>
@@ -93,6 +96,7 @@ export default class extends React.Component {
         </Slide>
         <Slide bgColor="white">
           <CodePane
+            textSize="40"
             lang="javascript"
             source={require("raw!./abs.example")}
             margin="20px auto"/>
@@ -114,6 +118,7 @@ export default class extends React.Component {
         <Slide bgColor="white"
           notes="The doStuff function here has side effect because the result depends on what the globalVariable is, and globalVariable can be changed by doOtherStuff function. This isn’t what we want because now the outputs are not the same when we pass in the same arguments every time.">
           <CodePane
+            textSize="30"
             lang="javascript"
             size
             source={require("raw!./side_effect.example")}
@@ -121,6 +126,7 @@ export default class extends React.Component {
         </Slide>
         <Slide bgColor="white">
           <CodePane
+            textSize="30"
             lang="javascript"
             size
             source={require("raw!./less_side_effect.example")}
@@ -138,6 +144,7 @@ export default class extends React.Component {
           </Appear>
           <Appear>
             <CodePane
+              textSize="30"
               lang="javascript"
               size
               source={require("raw!./cal_in_fn.example")}
@@ -147,6 +154,7 @@ export default class extends React.Component {
         <Slide bgColor="white">
           <Text>How to change this function to use immutable data structures?</Text>
             <CodePane
+              textSize="30"
               lang="javascript"
               size
               source={require("raw!./findMaxMutable.example")}
@@ -155,6 +163,7 @@ export default class extends React.Component {
         </Slide>
         <Slide bgColor="white">
             <CodePane
+              textSize="30"
               lang="javascript"
               size
               source={require("raw!./findMaxRecursion.example")}
@@ -168,22 +177,24 @@ export default class extends React.Component {
         </Slide>
         <Slide bgColor="white">
           <Appear>
-            <Image margin="0px auto 40px" width="20%" src={images.nullJS} />
+            <Image height="20%" width="30%" margin="10"  src={images.nullJS} />
           </Appear>
           <Appear>
-            <Image width="20%" src={images.nan} />
+            <Image height="20%" width="40%" margin="10" src={images.nan} />
           </Appear>
           <Appear>
-            <Image width="20%" src={images.console_minus} />
+            <Image height="20%" width="40%" margin="10" src={images.console_minus} />
+          </Appear>
+        </Slide>
+        <Slide bgColor="white">
+          <Appear>
+            <Image height="20%" width="40%" margin="10" src={images.console_plus} />
           </Appear>
           <Appear>
-            <Image width="20%" src={images.console_plus} />
+            <Image height="20%" margin="10" width="40%" src={images.false} />
           </Appear>
           <Appear>
-            <Image width="20%" src={images.false} />
-          </Appear>
-          <Appear>
-            <Image width="20%" src={images.typeof_nan} />
+            <Image height="20%" margin="10" width="40%" src={images.typeof_nan} />
           </Appear>
         </Slide>
         <Slide bgColor="white">
@@ -198,6 +209,7 @@ export default class extends React.Component {
         <Slide bgColor="white" notes="let and const are block scoped, no more hoisting. let variables can still be mutated. ">
           <CodePane
             lang="javascript"
+            textSize="30"
             size
             source={require("raw!./let.example")}
             margin="20px auto"/>
@@ -205,6 +217,7 @@ export default class extends React.Component {
         <Slide bgColor="white" notes="const variables cannot be changed once assigned, they have to be initialized when declared.">
           <CodePane
             lang="javascript"
+            textSize="30"
             size
             source={require("raw!./const.example")}
             margin="20px auto"/>
@@ -226,7 +239,7 @@ export default class extends React.Component {
         </Slide>
         <Slide bgColor="white">
           <Heading size={6}>But that's so inefficient!</Heading>
-          <Image src={images.inefficient} />
+          <Image width="100%" src={images.inefficient} />
         </Slide>
         <Slide bgColor="white" notes="immutablejs uses trie so only copy the changed items instead of the entire list">
           <Text>Persistent Data Structure HashMap Tries, Vector Tries</Text>
@@ -239,6 +252,7 @@ export default class extends React.Component {
           <Layout>
             <Fill>
               <CodePane
+                textSize="18"
                 lang="javascript"
                 size
                 source={require("raw!./regularjs.example")}
@@ -246,6 +260,7 @@ export default class extends React.Component {
             </Fill>
             <Fill>
               <CodePane
+                textSize="18"
                 lang="javascript"
                 size
                 source={require("raw!./immutablejs.example")}
@@ -257,6 +272,7 @@ export default class extends React.Component {
           <Text>Here's another example</Text>
           <Appear>
             <CodePane
+              textSize="25"
               lang="javascript"
               size
               source={require("raw!./nestedImmuJS.example")}
@@ -266,6 +282,7 @@ export default class extends React.Component {
         <Slide bgColor="white" notes="Clojure is a dialect of Lisp, and clojurescript is a dialect of Clojure that compiles to javascript. Clojurescript also has immutable data structures, and since it’s a dialect of Lisp, it has Lisp syntax.">
           <Heading size={1} textColor="black" cap>clojurescript</Heading>
           <CodePane
+            textSize="25"
             lang="javascript"
             size
             source={require("raw!./clojs.example")}
@@ -285,21 +302,24 @@ export default class extends React.Component {
         <Slide bgColor="white" notes="Reagent, can write react components in clojurescript">
           <Heading size={2} cap>reagent</Heading>
           <CodePane
+            textSize="25"
             lang="javascript"
             size
             source={require("raw!./reagent1.example")}
             margin="20px auto"/>
           <CodePane
+            textSize="25"
             lang="javascript"
             size
             source={require("raw!./reagent2.example")}
             margin="20px auto"/>
         </Slide>
         <Slide bgColor="white" notes="the intended use of atom is to hold one of Clojure's immutable data structures. And, similar to ref's alter and agent's send, you change the value by applying a function to the old value. This is done in an atomic manner by swap! Internally, swap! reads the current value, applies the function to it, and attempts to compare-and-set it in. Since another thread may have changed the value in the intervening time, it may have to retry, and does so in a spin loop. ">
-          <Image src={images.clojure_atom} /> 
+          <Image width="100%" src={images.clojure_atom} /> 
         </Slide>
         <Slide bgColor="white" notes="Reagent has its own version of atom, which re-renders itself whenever it’s changed by tracking when it is deref’ed. sounds familiar??">
           <CodePane
+            textSize="25"
             lang="javascript"
             size
             source={require("raw!./reagent_atom.example")}
@@ -311,6 +331,7 @@ export default class extends React.Component {
         </Slide>
         <Slide bgColor="white">
           <CodePane
+            textSize="25"
             lang="javascript"
             size
             source={require("raw!./purs.example")}
@@ -324,6 +345,7 @@ export default class extends React.Component {
         </Slide>
         <Slide bgColor="white" transition={['slide']} bgColor="white"
           notes="this is all i have, so if you wanna chat with any of these, or other interesting sciency things">
+          <Image height="20%" width="30%" margin="10" src={images.github}/>
           <Image height="20%" width="30%" margin="10" src={images.bigbang}/>
           <Image height="20%" width="30%" margin="10" src={images.reactjs}/>
           <Image height="20%" width="30%" margin="10" src={images.fp}/>

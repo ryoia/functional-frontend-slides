@@ -4,18 +4,14 @@ function doStuff(a, b, c) {
   console.log(a + ‘, ’ + b + ‘, ’ + c)
 }
 
-
 function doOtherStuff(name) {
   globalVariable = ‘hi’ + ‘, ’ + name
 }
 
-
 doStuff(‘Joanne’, ‘Marie’, ‘hi’)
 //Joanne, Marie, hi
 
-
 doOtherStuff(‘Julia’)
-
 
 doStuff(‘Joanne’, ‘Marie’, ‘hi’)
 //Joanne, Marie, hi
