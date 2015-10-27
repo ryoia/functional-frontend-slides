@@ -1,10 +1,10 @@
-let immuMap = Immutable.Map({1 : “hi”});
+const immuMap = Immutable.Map({1 : “hi”})
 
-let immuMap2 = immuMap.set({2 : “bye”});
+const immuMap2 = immuMap.set({2 : “bye”})
 
-console.log(immuMap.size);
-// 1
-
-console.log(immuMap2.size);
+console.log(immuMap2.size)
 // 2
+
+console.log(immuMap.size)
+// 1
 

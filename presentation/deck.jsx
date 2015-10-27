@@ -18,11 +18,13 @@ const images = {
   console_plus: require('./console_plus.png'),
   copies: require('./copies.png'),
   does_not_simply: require('./does_not_simply.png'),
+  ew: require('./ew.png'),
   expand_comfort: require('./expand_comfort.png'),
   false: require('./false.png'),
   fp: require('./fp.png'),
   github: require('./github.png'),
   haskell: require('./haskell.png'),
+  hidechange: require('./hidechange.png'),
   inefficient: require('./inefficient.gif'),
   lol: require('./lol.png'),
   make_better: require('./make_better.png'),
@@ -85,7 +87,7 @@ export default class extends React.Component {
             Stateless & Immutable
           </Heading>
         </Slide>
-        <Slide bgColor="white">
+        <Slide bgColor="white"
           notes="regardless of changes outside of that function. Which means, no matter how many times the function is getting called, the output should be the same with the same parameters. This makes the function really predictable, and easy to test/write/think about.">
           <Heading size={2} textColor="black">
             Stateless
@@ -105,7 +107,7 @@ export default class extends React.Component {
             source={require("raw!./abs.example")}
             margin="20px auto"/>
           <Appear fid="1">
-            <Heading textColor="black">
+            <Heading size={5} textColor="black">
               Advantages?
             </Heading>
             <List>
@@ -141,11 +143,8 @@ export default class extends React.Component {
           <Appear><Image height="500px" src={images.does_not_simply} /></Appear>
         </Slide>
         <Slide bgColor="white" notes="Why is immutability crucial. Think about the function we have, we pass in some parameters, but if they are mutable, we may do something within the function that changes the passed in value, so that doesn’t guarantee our results anymore. What would happen if you have a mutable data structure that will be changed in two different threads, the result wouldn’t be consistent and the change being made in the slower thread can be overriden. think about ++5, what if not only returns a 6, but changes all 5's to 6's. ">
-          <Heading size={5}>Immutable Data Structures</Heading>
-          <Text>++5, 'hi'</Text>
-          <Appear>
-            <Text>Why?</Text>
-          </Appear>
+          <Heading textColor="black" size={6}>++5 </Heading>
+          <Heading textColor="black" size={6}>'hi' += 'bye'</Heading>
           <Appear>
             <CodePane
               textSize="30"
@@ -155,13 +154,19 @@ export default class extends React.Component {
               margin="20px auto"/>
           </Appear>
         </Slide>
-        <Slide bgColor="white" notes="so here, you changes a person's name, but you are mutating the passed in person object. imaging that's the a value from the previous slide">
+        <Slide bgColor="white" notes="so here, you changes a person's name, but you are mutating the passed in person object. imaging that's the a value from the previous slide. after image: now the person has no way to tell whether the property got changed, since the old age property is gone and developers can't even compare the before and after...of course you can do console log before and after, but...">
             <CodePane
               textSize="30"
               lang="javascript"
               size
               source={require("raw!./getOlder.example")}
               margin="20px auto"/>
+        </Slide>
+        <Slide bgColor="white">
+          <Image width="100%" src={images.hidechange} />
+        </Slide>
+        <Slide bgColor="white">
+          <Image width="60%" src={images.ew} />
         </Slide>
         <Slide notes="so instead, you can return a new object, but this gets tedious if an object contains a lot of fields" bgColor="white">
             <CodePane
@@ -172,7 +177,7 @@ export default class extends React.Component {
               margin="20px auto"/>
         </Slide>
         <Slide bgColor="white"
-          notes="so instead, we can use object.assign, which creates a new object that copies everything in person, and updates the age property. or use es6's rest and spread, so we deconstruct the age property first, and copy whatever is rest">
+          notes="so instead, we can use object.assign, which creates a new object that copies everything in person, and updates the age property. or use es6's rest and spread, so we deconstruct the age property first, and copy whatever is left">
             <CodePane
               textSize="30"
               lang="javascript"
@@ -187,7 +192,7 @@ export default class extends React.Component {
               margin="20px auto"/>
         </Slide>
         <Slide bgColor="white">
-          <Heading size={1} textColor="black" fit caps>How to Make Frontend More Functional</Heading>
+          <Heading size={1} textColor="black" fit caps>FP in your Front-end</Heading>
         </Slide>
         <Slide bgColor="white">
           <Heading size={1} textColor="black" fit caps>Disclaimer</Heading>
@@ -231,7 +236,7 @@ export default class extends React.Component {
             source={require("raw!./let.example")}
             margin="20px auto"/>
         </Slide>
-        <Slide bgColor="white" notes="const variables cannot be changed once assigned, they have to be initialized when declared.">
+        <Slide bgColor="white" notes="const variables cannot be changed once assigned, also, they have to be initialized when declared.">
           <CodePane
             lang="javascript"
             textSize="30"
@@ -239,31 +244,30 @@ export default class extends React.Component {
             source={require("raw!./const.example")}
             margin="20px auto"/>
         </Slide>
-        <Slide bgColor="white">
-          <Heading size={6}>Libraries/Frameworks that can make front-end more functional</Heading>
-          <List>
-            <ListItem>ImmutableJS with ReactJS</ListItem>
-            <ListItem>ClojureScript</ListItem>
-            <ListItem>PureScript</ListItem>
-            <ListItem>What do you use?</ListItem>
-          </List>
+        <Slide bgColor="white" 
+          notes="up to this point, we simply used JavaScript syntax. but if you want to take functional programming to another level on the front-end, you can use: ...">
+          <Heading size={4}>Tools beyond JavaScript</Heading>
+            <Appear><Text textSize="60">ImmutableJS with ReactJS</Text></Appear>
+            <Appear><Text textSize="60">ClojureScript</Text></Appear>
+            <Appear><Text textSize="60">PureScript</Text></Appear>
+            <Appear><Text textSize="60">What do you use?</Text></Appear>
         </Slide>
-        <Slide bgColor="white" notes="This already looks promising since immutability is one of the cores FP has. ImmutableJS provides immutable data structures, so like map, set, list are immutable, which means, you make a data structure every time there is a change.">
+        <Slide bgColor="white" notes="This already looks promising since immutability is one of the cores concept to FP. ImmutableJS provides immutable data structures, like maps, sets, and lists, and they mostly follow the same apis as the new data structures in es6 of the same names, but the ones in immutablejs can never mutates, which means, you make a data structure every time there is a change.">
           <Heading size={1} textColor="black" caps>ImmutableJS</Heading>
         </Slide>
-        <Slide bgColor="white" notes="put copies of powerpoints here. explaining I wanted to make my preparing process immutable as well. so now you may wonder, since I’m making a copy of every time I make a change, this is super heavy and slow. but, immutablejs actually has this persistent data structures, which means they make a copy of the changed items, then link it back to the unchanged things. this is a simplified version of course, if you want to learn more specifics, do look up tries implementation that immutablejs uses. ">
+        <Slide bgColor="white" notes="I wanted to make my preparing process immutable as well. so now you may wonder, since I’m making a copy of every time I make a change, this is super heavy and slow. but, immutablejs actually has this persistent data structures, which means they make a copy of the changed items, then link it back to the unchanged things. this is a simplified version of course, if you want to learn more specifics, do look up tries implementation that immutablejs uses. ">
           <Image width="100%" src={images.copies} />
         </Slide>
         <Slide bgColor="white">
           <Heading size={6}>But that's so inefficient!</Heading>
           <Image width="100%" src={images.inefficient} />
         </Slide>
-        <Slide bgColor="white" notes="immutablejs uses trie so only copy the changed items instead of the entire list">
-          <Text>Persistent Data Structure HashMap Tries, Vector Tries</Text>
+        <Slide bgColor="white" notes="immutablejs uses trie so only copy the changed items instead of the entire list. so say you change the value 4, then change the whole path. and the values didn't get changed share the same reference. normally this sounds like a bad idea because the shared data can be changed, but since the data can't be changed, then it's safe to safe memory">
+          <Text>Persistent Data Structures -- HashMap Tries, Vector Tries</Text>
           <Image width="100%" src={images.tries} />
         </Slide>
         <Slide bgColor="white" notes="When I first read this, I was like, this is genius">
-          <Image src={images.clap} />
+          <Image width="80%" src={images.clap} />
         </Slide>
         <Slide bgColor="white" notes="Here's a comparison between regular js and immutablejs">
           <Layout>
@@ -286,7 +290,7 @@ export default class extends React.Component {
           </Layout>
         </Slide>
         <Slide bgColor="white" notes="so let's use immutablejs">
-          <Text>Here's another example</Text>
+          <Text textSize="60">Here's another example</Text>
           <Appear>
             <CodePane
               textSize="25"
@@ -297,61 +301,77 @@ export default class extends React.Component {
           </Appear>
         </Slide>
         <Slide bgColor="white" notes="Clojure is a dialect of Lisp, and clojurescript is a dialect of Clojure that compiles to javascript. Clojurescript also has immutable data structures, and since it’s a dialect of Lisp, it has Lisp syntax.">
-          <Heading size={1} textColor="black" cap>clojurescript</Heading>
+          <Heading size={2} textColor="black">ClojureScript</Heading>
           <CodePane
             textSize="25"
-            lang="javascript"
+            lang="clojure"
             size
             source={require("raw!./clojs.example")}
             margin="20px auto"/>
         </Slide>
         <Slide bgColor="white">
           <Text>Modular:</Text>
-          <Code>(ns myapp ...</Code>
-          <Code>(ns hello_world.core ...</Code>
+          <Code>(ns myapp...</Code>
+          <Text></Text>
+          <Code>(ns hello_world.core...</Code>
           <Text>Immutable Data Structure: </Text>
           <Code>
-            (def v [1 2 3]) // v = [1 2 3]
-            (conj v 4) // [1 2 3 4]
-             v // [1 2 3]
+            (def v [1 2 3]) -> [1 2 3]
+            <Text></Text>
+            (conj v 4) -> [1 2 3 4]
+            <Text></Text>
+             v -> [1 2 3]
           </Code>
         </Slide>
-        <Slide bgColor="white" notes="Reagent, can write react components in clojurescript">
+        <Slide bgColor="white" notes="Reagent, can write react components in clojurescript, similar to regular functions as components in react 0.14">
           <Heading size={2} cap>reagent</Heading>
           <CodePane
             textSize="25"
-            lang="javascript"
+            lang="clojure"
             size
             source={require("raw!./reagent1.example")}
             margin="20px auto"/>
           <CodePane
             textSize="25"
-            lang="javascript"
+            lang="clojure"
             size
             source={require("raw!./reagent2.example")}
             margin="20px auto"/>
         </Slide>
-        <Slide bgColor="white" notes="the intended use of atom is to hold one of Clojure's immutable data structures. And, similar to ref's alter and agent's send, you change the value by applying a function to the old value. This is done in an atomic manner by swap! Internally, swap! reads the current value, applies the function to it, and attempts to compare-and-set it in. Since another thread may have changed the value in the intervening time, it may have to retry, and does so in a spin loop. ">
-          <Image width="100%" src={images.clojure_atom} /> 
+        <Slide bgColor="white" notes="so all the built-in data structures are immutable in clojure, so how do you change variables. clojure uses atoms, which is another data structure, to hold immutable data, and when you change a variable, it changes by applying the swap! function, so atoms is mutable.">
+          <CodePane
+            textSize="25"
+            lang="clojure"
+            size
+            source={require("raw!./atom.example")}
+            margin="20px auto"/>
         </Slide>
         <Slide bgColor="white" notes="Reagent has its own version of atom, which re-renders itself whenever it’s changed by tracking when it is deref’ed. sounds familiar??">
           <CodePane
             textSize="25"
-            lang="javascript"
+            lang="clojure"
             size
             source={require("raw!./reagent_atom.example")}
             margin="20px auto"/>
         </Slide>
         <Slide bgColor="white" notes="written in Haskell, strongly typed language that compiles to javascript. Hence, everything else is impurescript.">
-          <Heading cap size={2}>Purescript</Heading>
+          <Heading cap size={2}>PureScript</Heading>
           <Image width="100%" src={images.haskell} />
         </Slide>
         <Slide bgColor="white">
           <CodePane
             textSize="25"
-            lang="javascript"
+            lang="haskell"
             size
             source={require("raw!./purs.example")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide bgColor="white">
+          <CodePane
+            textSize="25"
+            lang="haskell"
+            size
+            source={require("raw!./getOlderPure.example")}
             margin="20px auto"/>
         </Slide>
         <Slide bgColor="white">

@@ -1,0 +1,4 @@
+(def my-atom (atom 0))
+-- my-atom: (atom 0)
+(swap! my-atom inc)
+-- my-atom: (atom 1)
