@@ -1,0 +1,3 @@
+function getOlder(person) {
+  person.age++
+}

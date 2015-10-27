@@ -1,7 +1,7 @@
 var globalVariable = ‘hi’
 
 function doStuff(a, b) {
-  console.log(a + ‘, ’ + b + ‘, ’ + globalVariable)
+  return a + ‘, ’ + b + ‘, ’ + globalVariable
 }
 
 function doOtherStuff(name) {

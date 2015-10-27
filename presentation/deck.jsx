@@ -57,7 +57,7 @@ export default class extends React.Component {
           </Heading>
         </Slide>
         <Slide bgColor="white"
-          notes="Who am i...I like astronomy and reactjs and functional programming and video games, so if you are interested in any of those things, I'd like to chat with you">
+          notes="Who am i...I'm a software developer at O.C. Tanner, I like astronomy, reactjs, functional programming, league of legends, and mario kart, so if you are interested in any of those things, I'd like to chat with you">
           <Image height="20%" width="30%" margin="10" src={images.github}/>
           <Image height="20%" width="30%" margin="10" src={images.bigbang}/>
           <Image height="20%" width="30%" margin="10" src={images.reactjs}/>
@@ -65,43 +65,47 @@ export default class extends React.Component {
           <Image height="20%" width="30%" margin="10" src={images.lol}/>
           <Image height="20%" width="30%" margin="10" src={images.mario8}/>
         </Slide>
-        <Slide transition={['slide']} bgColor="white" notes="So I'm gonna do a super quick introduction on functional programming before we dive into how to make frontend more functional">
+        <Slide transition={['slide']} bgColor="white" 
+          notes="So I'm gonna talk about some concepts of functional programming first, so the examples later will make sense. ">
           <List>
             <ListItem textSize="60"><Appear fid="1">
-              What functional programming is all about
+              FP?
             </Appear></ListItem>
             <ListItem textSize="60"><Appear fid="2">
-              How to make our front-end applications more functional using the tools we currently have
+              FP in your front-end?
             </Appear></ListItem>
           </List>
         </Slide>
         <Slide transition={['slide']} bgColor="white"
-          notes="So basically, a function call either returns a value, or another function call. Now, let's see two concepts that hopefully make the functional-style make more sense">
+          notes="if some of you have seen this before, it's obviously a joke, but also kinda true. because ... a function call either returns a value, or another function call. ">
           <Image width="100%" height="100%" src={images.oo_fp_patterns} />
         </Slide>
-        <Slide transition={['slide']} bgColor="white">
+        <Slide notes="stateless fucntions, and immutable data structures are two concepts in functional programming. Now, let's learn more about these two concepts, so you will then understand how it may help you"transition={['slide']} bgColor="white">
           <Heading textColor="black">
             Stateless & Immutable
           </Heading>
         </Slide>
         <Slide bgColor="white">
+          notes="regardless of changes outside of that function. Which means, no matter how many times the function is getting called, the output should be the same with the same parameters. This makes the function really predictable, and easy to test/write/think about.">
           <Heading size={2} textColor="black">
-            Stateless (Idempotence)
+            Stateless
           </Heading>
-          <Text>
-            Same argument, same output, regardless of changes outside of that function.
-            Which means, no matter how many times the function is getting called, 
-            the output should be the same with the same parameters
-          </Text>
+          <Heading size={2} textColor="black">
+            Pure, Idempotent
+          </Heading>
+          <Heading size={4} textColor="black">
+            Same argument? same output.           
+          </Heading>
         </Slide>
-        <Slide bgColor="white">
+        <Slide bgColor="white"
+          notes="the absolute function, calculates a value's distance to 0. so this code makes sense, right? You call the same function 3 times, with same params, it produces same output. how simple it'd be to write/test/think about our code if it behaves like that. think about how pissed off you'd be if you call absolute value again later and it gives you something completely different">
           <CodePane
             textSize="40"
             lang="javascript"
             source={require("raw!./abs.example")}
             margin="20px auto"/>
           <Appear fid="1">
-            <Heading>
+            <Heading textColor="black">
               Advantages?
             </Heading>
             <List>
@@ -116,7 +120,7 @@ export default class extends React.Component {
           <Image width="100%" height="100%" src={images.not_working} />
         </Slide>
         <Slide bgColor="white"
-          notes="The doStuff function here has side effect because the result depends on what the globalVariable is, and globalVariable can be changed by doOtherStuff function. This isn’t what we want because now the outputs are not the same when we pass in the same arguments every time.">
+          notes="The doStuff function here has side effects because the result depends on what the globalVariable is, and globalVariable can be changed by doOtherStuff function. This isn’t what we want because now the outputs are not the same when we pass in the same arguments every time.">
           <CodePane
             textSize="30"
             lang="javascript"
@@ -132,13 +136,13 @@ export default class extends React.Component {
             source={require("raw!./less_side_effect.example")}
             margin="20px auto"/>
         </Slide>
-        <Slide bgColor="white">
-          <Appear><Heading size={6}>Immutable Data Structures</Heading></Appear>
+        <Slide bgColor="white" notes="the 2nd concept is: ">
+          <Appear><Heading size={5}>Immutable Data Structures</Heading></Appear>
           <Appear><Image height="500px" src={images.does_not_simply} /></Appear>
         </Slide>
-        <Slide bgColor="white" notes="Why immutability is crucial. Think about the function we have, we pass in some parameters, but if they are mutable, we may do something within the function that changes the passed in parameter, so that doesn’t guarantee our results anymore. What would happen if you have a mutable data structure that will be changed in two different threads, the result wouldn’t be consistent and the change being made in the slow thread can be overriden. ">
-          <Heading size={6}>ImmutableDataStructures</Heading>
-          <Text>Once assigned, can't be mutated. e.g. 5, "hi"</Text>
+        <Slide bgColor="white" notes="Why is immutability crucial. Think about the function we have, we pass in some parameters, but if they are mutable, we may do something within the function that changes the passed in value, so that doesn’t guarantee our results anymore. What would happen if you have a mutable data structure that will be changed in two different threads, the result wouldn’t be consistent and the change being made in the slower thread can be overriden. think about ++5, what if not only returns a 6, but changes all 5's to 6's. ">
+          <Heading size={5}>Immutable Data Structures</Heading>
+          <Text>++5, 'hi'</Text>
           <Appear>
             <Text>Why?</Text>
           </Appear>
@@ -151,22 +155,35 @@ export default class extends React.Component {
               margin="20px auto"/>
           </Appear>
         </Slide>
-        <Slide bgColor="white">
-          <Text>How to change this function to use immutable data structures?</Text>
+        <Slide bgColor="white" notes="so here, you changes a person's name, but you are mutating the passed in person object. imaging that's the a value from the previous slide">
             <CodePane
               textSize="30"
               lang="javascript"
               size
-              source={require("raw!./findMaxMutable.example")}
+              source={require("raw!./getOlder.example")}
               margin="20px auto"/>
-          <Text>Recursion!</Text>
         </Slide>
-        <Slide bgColor="white">
+        <Slide notes="so instead, you can return a new object, but this gets tedious if an object contains a lot of fields" bgColor="white">
             <CodePane
               textSize="30"
               lang="javascript"
               size
-              source={require("raw!./findMaxRecursion.example")}
+              source={require("raw!./getOlderImmu.example")}
+              margin="20px auto"/>
+        </Slide>
+        <Slide bgColor="white"
+          notes="so instead, we can use object.assign, which creates a new object that copies everything in person, and updates the age property. or use es6's rest and spread, so we deconstruct the age property first, and copy whatever is rest">
+            <CodePane
+              textSize="30"
+              lang="javascript"
+              size
+              source={require("raw!./objAssign.example")}
+              margin="20px auto"/>
+            <CodePane
+              textSize="30"
+              lang="javascript"
+              size
+              source={require("raw!./es6.example")}
               margin="20px auto"/>
         </Slide>
         <Slide bgColor="white">

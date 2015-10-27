@@ -1,0 +1,3 @@
+function getOlder(person) {
+  return Object.assign({}, person, {age: person.age + 1})
+}

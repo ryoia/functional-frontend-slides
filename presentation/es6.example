@@ -1,0 +1,3 @@
+function getOlder({age, ...other}) {
+  return {age: age + 1, ...other}
+}

@@ -1,0 +1,6 @@
+function getOlder(person) {
+  return {
+    name: person.name,
+    age: person.age + 1
+  }
+}
