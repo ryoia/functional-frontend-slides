@@ -1,4 +1,4 @@
-let globalVariable;
+let globalVariable
 
 function doStuff(a, b, c) {
   return a + ‘, ’ + b + ‘, ’ + c

@@ -1,4 +1,4 @@
-var globalVariable = ‘hi’
+let globalVariable = ‘hi’
 
 function doStuff(a, b) {
   return a + ‘, ’ + b + ‘, ’ + globalVariable
