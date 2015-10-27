@@ -390,6 +390,9 @@ export default class extends React.Component {
           <Image height="20%" width="30%" margin="10" src={images.mario8}/>
         </Slide>
         <Slide bgColor="white">
+          <Heading size={4}>https://github.com/ryoia/reactive-conf-slides</Heading>
+        </Slide>
+        <Slide bgColor="white">
           <Heading size={2}>Twitter: @ryoia</Heading>
         </Slide>
         <Slide bgColor="white">
