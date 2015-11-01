@@ -13,6 +13,7 @@ const images = {
   bigbang: require('./bigbang.gif'),
   clap: require('./clap.gif'),
   clojure_atom: require('./clojure_atom.png'),
+  coffee: require('./coffee.gif'),
   comfort_zone: require('./comfort_zone.png'),
   console_minus: require('./console_minus.png'),
   console_plus: require('./console_plus.png'),
@@ -36,6 +37,7 @@ const images = {
   nullJS: require('./null.png'),
   oo_fp_patterns: require('./oo_fp_patterns.png'),
   purescript: require('./purscript.png'),
+  reactImmu: require('./reactImmu.png'),
   reactjs: require('./reactjs.png'),
   tries: require('./tries.png'),
   typeof_nan: require('./typeof_nan.png')
@@ -68,7 +70,7 @@ export default class extends React.Component {
           <Image height="20%" width="30%" margin="10" src={images.mario8}/>
         </Slide>
         <Slide bgColor="white" transition={['slide']}  
-          notes="So I'm gonna talk about some concepts of functional programming first, so the examples later will make sense. ">
+          notes="So I'm gonna talk about some concepts of functional programming first, so then the examples later will make sense. ">
           <List>
             <ListItem textSize="60"><Appear fid="1">
               FP?
@@ -79,10 +81,10 @@ export default class extends React.Component {
           </List>
         </Slide>
         <Slide bgColor="white" transition={['slide']} 
-          notes="if some of you have seen this before, it's obviously a joke, but also kinda true. because all the things you see on the left hand side are ways to construct the program, but you can simply use functions to accomplish the same thing without all the boilerplate. a function call either returns a value, or another function call. ">
+          notes="if some of you have seen this before, it's obviously a joke, but also kinda true. fp emphasizes what simple functions can do, and there are a lot of concepts, but i'm going to introduce two simpler ones today">
           <Image width="100%" height="100%" src={images.oo_fp_patterns} />
         </Slide>
-        <Slide bgColor="white" notes="stateless functions, and immutable data structures are two concepts in functional programming. Now, let's learn more about these two concepts, so you will then understand how it may help you"transition={['slide']} >
+        <Slide bgColor="white" notes="stateless functions, and immutable data structures. Now, let's learn more about these two concepts, so you will then understand how they may help you"transition={['slide']} >
           <Heading textColor="black">
             Stateless & Immutable
           </Heading>
@@ -263,7 +265,7 @@ export default class extends React.Component {
           <Image width="100%" src={images.inefficient} />
         </Slide>
         <Slide bgColor="white"  notes="immutablejs uses hashmap and vector tries, so only copy the changed items instead of the entire list. so say you change the value 4, then change the whole path. and the values didn't get changed share the same reference. normally this sounds like a bad idea because the shared data can be changed, but since the data can't be changed, then it's safe to safe memory">
-          <Text>Persistent Data Structures -- HashMap Tries, Vector Tries</Text>
+          <Text>Persistent Data Structures</Text>
           <Image width="100%" src={images.tries} />
         </Slide>
         <Slide bgColor="white"  notes="When I first read this, I was like, this is genius">
@@ -299,6 +301,10 @@ export default class extends React.Component {
               source={require("raw!./nestedImmuJS.example")}
               margin="20px auto"/>
           </Appear>
+        </Slide>
+        <Slide bgColor="white">
+          <Heading size={2}>Switching Gears</Heading>
+          <Image src={images.coffee} width="100%" />
         </Slide>
         <Slide bgColor="white"  notes="Clojure is a dialect of Lisp, and clojurescript is a dialect of Clojure that compiles to javascript. Clojurescript also has immutable data structures, and since it’s a dialect of Lisp, it has Lisp syntax.">
           <Heading size={2} textColor="black">ClojureScript</Heading>
@@ -353,6 +359,7 @@ export default class extends React.Component {
             size
             source={require("raw!./reagent_atom.example")}
             margin="20px auto"/>
+            <Link textSize="50" href="http://clojure.org/atoms">Clojure Atom</Link>
         </Slide>
         <Slide bgColor="white"  notes="written in Haskell, strongly typed language that compiles to javascript. Hence, everything else is impurescript.">
           <Heading cap size={2}>PureScript</Heading>
@@ -373,6 +380,7 @@ export default class extends React.Component {
             size
             source={require("raw!./getOlderPure.example")}
             margin="20px auto"/>
+          <Link textSize="50" href="https://github.com/purescript/purescript/wiki">PureScript Wiki</Link>
         </Slide>
         <Slide bgColor="white" >
           <Image width="100%" src={images.comfort_zone} />
@@ -391,9 +399,7 @@ export default class extends React.Component {
         </Slide>
         <Slide bgColor="white" >
           <Heading size={4}>https://github.com/ryoia/reactive-conf-slides</Heading>
-        </Slide>
-        <Slide bgColor="white" >
-          <Heading size={2}>Twitter: @ryoia</Heading>
+          <Heading size={4}>Twitter: @ryoia</Heading>
         </Slide>
         <Slide bgColor="white" >
           <Heading size={2}>Thank you!</Heading>
