@@ -1,0 +1,11 @@
+function sqrNumber(n) {
+  return n ** 2
+}
+
+function divideBy2(n) {
+  return n / 2
+}
+
+function comboMath(n) {
+  return divideBy2(sqrNumber(n))
+}

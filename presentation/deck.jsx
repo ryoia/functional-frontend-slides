@@ -39,6 +39,7 @@ const images = {
   purescript: require('./purscript.png'),
   reactImmu: require('./reactImmu.png'),
   reactjs: require('./reactjs.png'),
+  smart: require('./i_am_smart.gif'),
   tries: require('./tries.png'),
   typeof_nan: require('./typeof_nan.png')
 };
@@ -86,7 +87,7 @@ export default class extends React.Component {
         </Slide>
         <Slide bgColor="white" notes="stateless functions, and immutable data structures. Now, let's learn more about these two concepts, so you will then understand how they may help you"transition={['slide']} >
           <Heading textColor="black">
-            Stateless & Immutable
+            Stateless  Composable  Immutable
           </Heading>
         </Slide>
         <Slide bgColor="white" 
@@ -140,7 +141,71 @@ export default class extends React.Component {
             source={require("raw!./less_side_effect.example")}
             margin="20px auto"/>
         </Slide>
-        <Slide bgColor="white"  notes="the 2nd concept is: ">
+        <Slide bgColor="white">
+          <Appear>
+            <CodePane
+              textSize="40"
+              lang="javascript"
+              source={require("raw!./abs.example")}
+              margin="20px auto"/>
+          </Appear>
+          <Appear>
+            <CodePane
+              textSize="40"
+              lang="javascript"
+              source={require("raw!./square.example")}
+              margin="20px auto"/>
+          </Appear>
+          <Appear>
+            <CodePane
+              textSize="40"
+              lang="javascript"
+              source={require("raw!./sqrabs.example")}
+              margin="20px auto"/>
+          </Appear>
+        </Slide>
+        <Slide bgColor="white">
+          <Heading size={2} color="black">Composable Functions</Heading>
+          <Appear><Text>f(x) = x ^ 2</Text></Appear>
+          <Appear><Text>g(x) = |x|</Text></Appear>
+          <Appear><Text>(f ∘ g)(x) = f(g(x)) = |x| ^ 2</Text></Appear>
+        </Slide>
+        <Slide bgColor="white">
+          <Image width="100%" height="100%" src={images.smart} />
+        </Slide>
+        <Slide bgColor="white">
+          <Heading size={2} color="black">How does that apply to JavaScript/Programming?</Heading>
+        </Slide>
+        <Slide bgColor="white" note="">
+          <Text>let as = ['a', 'b', 'c', 'e', 'z']</Text>
+          <Appear><Text>as.splice(0, 2)</Text></Appear>
+          <Appear><Text>//['a', 'b']</Text></Appear>
+          <Appear><Text>//as = ['c', 'e', 'z']</Text></Appear>
+          <Appear><Text>as.slice(0, 2)</Text></Appear>
+          <Appear><Text>//['a', 'b']</Text></Appear>
+          <Appear><Text>//as = ['a', 'b', 'c', 'e', 'z']</Text></Appear>
+        </Slide>
+        <Slide bgColor="white">
+          <CodePane
+            textSize="20"
+            lang="javascript"
+            source={require("raw!./pure-sqr.example")}
+            margin="20px auto"/>
+          <CodePane
+            textSize="20"
+            lang="javascript"
+            source={require("raw!./pure-divide2.example")}
+            margin="20px auto"/>
+          <CodePane
+            textSize="20"
+            lang="javascript"
+            source={require("raw!./pure-combo.example")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide bgColor="white">
+            <Link textSize="50" href="https://jsbin.com/mejeli/7/edit?html,js,output">Example</Link>
+        </Slide>
+        <Slide bgColor="white"  notes="the 3rd concept is: ">
           <Appear><Heading size={5}>Immutable Data Structures</Heading></Appear>
           <Appear><Image height="500px" src={images.does_not_simply} /></Appear>
         </Slide>
