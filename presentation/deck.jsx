@@ -389,6 +389,13 @@ export default class extends React.Component {
           <Text>When a thing that worked on Friday no longer works on Monday</Text>
           <Image width="100%" height="100%" src={images.not_working} />
         </Slide>
+        <Slide bgColor="white" notes="">
+          <Text>Higher-Order Functions</Text>
+          <CodePane
+            lane="javascript"
+            textSize="30"
+            source={require("raw!./higher_order_fn.example")} />
+        </Slide>
         <Slide  bgColor="white" 
           notes="up to this point, we simply used JavaScript syntax. but if you want to take functional programming to another level on the front-end, you can use: ...">
           <Heading size={4}>Tools beyond JavaScript</Heading>
@@ -536,7 +543,7 @@ export default class extends React.Component {
           <Heading color="black" size={4}>http://www.meetup.com/utah-haskell/</Heading>
         </Slide>
         <Slide bgColor="white" >
-          <Heading size={4}>https://github.com/ryoia/reactive-conf-slides</Heading>
+          <Heading size={4}>https://github.com/ryoia/functional-frontend-slides</Heading>
           <Heading size={4}>Twitter: @ryoia</Heading>
         </Slide>
         <Slide bgColor="white" >

@@ -1,0 +1,16 @@
+function funcParams (num, fn) {
+  return fn(num)
+}
+
+function timesTwo (n) {
+  return n * 2
+}
+
+funcParams (5, timesTwo) // 10
+
+function funcResult (n) {
+  return function (second) {
+    return n + second
+  }
+}
+funcResult(2)(3) // 5
