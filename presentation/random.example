@@ -1,0 +1,3 @@
+function randomPlus (n) {
+  return n + Math.random() * 100
+}

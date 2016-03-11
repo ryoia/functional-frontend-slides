@@ -25,6 +25,8 @@ const images = {
   fp: require('./fp.png'),
   github: require('./github.png'),
   haskell: require('./haskell.png'),
+  haskell_joke: require('./haskell_joke.png'),
+  haskell_logo: require('./haskell_logo.png'),
   hidechange: require('./hidechange.png'),
   inefficient: require('./inefficient.gif'),
   lol: require('./lol.png'),
@@ -39,9 +41,12 @@ const images = {
   purescript: require('./purscript.png'),
   reactImmu: require('./reactImmu.png'),
   reactjs: require('./reactjs.png'),
+  recursion_doll: require('./recursion_doll.jpg'),
+  sad_animal: require('./sad_animal.jpg'),
   smart: require('./i_am_smart.gif'),
   tries: require('./tries.png'),
-  typeof_nan: require('./typeof_nan.png')
+  typeof_nan: require('./typeof_nan.png'),
+  wat: require('./wat.jpg')
 };
 
 //preloader([images.city, images.kat]);
@@ -54,7 +59,8 @@ export default class extends React.Component {
           <Heading size={1} fit caps textColor="black">
             Front-end can be more functional
           </Heading>
-          <Text>- Julia Gao</Text>
+          <Text>Julia Gao</Text>
+          <Text>@ryoia</Text>
         </Slide>
         <Slide bgColor="white" transition={['slide']} >
           <Heading size={4} textColor="black">
@@ -66,9 +72,8 @@ export default class extends React.Component {
           <Image height="20%" width="30%" margin="10" src={images.github}/>
           <Image height="20%" width="30%" margin="10" src={images.bigbang}/>
           <Image height="20%" width="30%" margin="10" src={images.reactjs}/>
+          <Image height="20%" width="30%" margin="10" src={images.haskell_logo}/>
           <Image height="20%" width="30%" margin="10" src={images.fp}/>
-          <Image height="20%" width="30%" margin="10" src={images.lol}/>
-          <Image height="20%" width="30%" margin="10" src={images.mario8}/>
         </Slide>
         <Slide bgColor="white" transition={['slide']}  
           notes="So I'm gonna talk about some concepts of functional programming first, so then the examples later will make sense. ">
@@ -80,6 +85,9 @@ export default class extends React.Component {
               FP in your front-end?
             </Appear></ListItem>
           </List>
+        </Slide>
+        <Slide bgColor="white">
+          <Image width="50%" height="50%" src={images.haskell_joke} />
         </Slide>
         <Slide bgColor="white" transition={['slide']} 
           notes="if some of you have seen this before, it's obviously a joke, but also kinda true. fp emphasizes what simple functions can do, and there are a lot of concepts, but i'm going to introduce two simpler ones today">
@@ -120,10 +128,6 @@ export default class extends React.Component {
             </List>
           </Appear>
         </Slide>
-        <Slide bgColor="white"  notes="Can be due to somebody else changed something somewhere, we don't want that to happen">
-          <Text>When a thing that worked on Friday no longer works on Monday</Text>
-          <Image width="100%" height="100%" src={images.not_working} />
-        </Slide>
         <Slide bgColor="white" 
           notes="The doStuff function here has side effects because the result depends on what the globalVariable is, and globalVariable can be changed by doOtherStuff function. This isn’t what we want because now the outputs are not the same when we pass in the same arguments every time.">
           <CodePane
@@ -132,6 +136,17 @@ export default class extends React.Component {
             size
             source={require("raw!./side_effect.example")}
             margin="20px auto"/>
+        </Slide>
+        <Slide bgColor="white">
+          <CodePane
+            textSize="30"
+            lang="javascript"
+            source={require("raw!./side_effect_2.example")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide bgColor="white"  notes="Can be due to somebody else changed something somewhere, we don't want that to happen">
+          <Text>When a thing that worked on Friday no longer works on Monday</Text>
+          <Image width="100%" height="100%" src={images.not_working} />
         </Slide>
         <Slide bgColor="white" >
           <CodePane
@@ -164,11 +179,12 @@ export default class extends React.Component {
               margin="20px auto"/>
           </Appear>
         </Slide>
-        <Slide bgColor="white">
-          <Heading size={2} color="black">Composable Functions</Heading>
+        <Slide bgColor="white" notes="ok i didn't promise there will be no math...">
+          <Appear><Heading size={2}>∘</Heading></Appear> 
+          <Appear><Heading size={2} color="black">Composable Functions</Heading></Appear>
           <Appear><Text>f(x) = x ^ 2</Text></Appear>
           <Appear><Text>g(x) = |x|</Text></Appear>
-          <Appear><Text>(f ∘ g)(x) = f(g(x)) = |x| ^ 2</Text></Appear>
+          <Appear><Text>(f ∘ g)(x) = f(g(x))</Text></Appear>
         </Slide>
         <Slide bgColor="white">
           <Image width="100%" height="100%" src={images.smart} />
@@ -176,16 +192,17 @@ export default class extends React.Component {
         <Slide bgColor="white">
           <Heading size={2} color="black">How does that apply to JavaScript/Programming?</Heading>
         </Slide>
-        <Slide bgColor="white" note="">
+        <Slide bgColor="white" notes="so we have to make sure the function doesn't change the variables, otherwise composable functions don't produce consistent results">
           <Text>let as = ['a', 'b', 'c', 'e', 'z']</Text>
           <Appear><Text>as.splice(0, 2)</Text></Appear>
           <Appear><Text>//['a', 'b']</Text></Appear>
           <Appear><Text>//as = ['c', 'e', 'z']</Text></Appear>
-          <Appear><Text>as.slice(0, 2)</Text></Appear>
+          <Appear><Text>let xs = ['a', 'b', 'c', 'e', 'z']</Text></Appear>
+          <Appear><Text>xs.slice(0, 2)</Text></Appear>
           <Appear><Text>//['a', 'b']</Text></Appear>
-          <Appear><Text>//as = ['a', 'b', 'c', 'e', 'z']</Text></Appear>
+          <Appear><Text>//xs = ['a', 'b', 'c', 'e', 'z']</Text></Appear>
         </Slide>
-        <Slide bgColor="white">
+        <Slide bgColor="white" notes="so similar to the math example, we have these two functions.">
           <CodePane
             textSize="20"
             lang="javascript"
@@ -201,9 +218,6 @@ export default class extends React.Component {
             lang="javascript"
             source={require("raw!./pure-combo.example")}
             margin="20px auto"/>
-        </Slide>
-        <Slide bgColor="white">
-            <Link textSize="50" href="https://jsbin.com/mejeli/7/edit?html,js,output">Example</Link>
         </Slide>
         <Slide bgColor="white"  notes="the 3rd concept is: ">
           <Appear><Heading size={5}>Immutable Data Structures</Heading></Appear>
@@ -289,6 +303,21 @@ export default class extends React.Component {
         <Slide bgColor="white" >
           <Image width="100%" src={images.make_better} />
         </Slide>
+        <Slide bgColor="white">
+          <Heading size={2} fit caps textColor="black">
+            No changing variables after initial assignment
+          </Heading>
+          <Appear>
+            <Text> var a = 10;</Text>
+            <Text> a = a * 2;</Text>
+            <Text> // a has been changed!</Text>
+          </Appear>
+          <Appear>
+            <Text> var a = 10;</Text>
+            <Text> var b = a * 2; </Text>
+            <Text>// that's better </Text>
+          </Appear>
+        </Slide>
         <Slide bgColor="white" >
           <Image width="80%" height="600px" src={images.make_let} />
         </Slide>
@@ -310,6 +339,55 @@ export default class extends React.Component {
             size
             source={require("raw!./const.example")}
             margin="20px auto"/>
+        </Slide>
+        <Slide bgColor="white"  notes="that's not entirely true. the following is also valid code">
+          <Heading size={4}>
+            Do not modify existing objects
+          </Heading>
+          <CodePane
+            lang="javascript"
+            textSize="30"
+            size
+            source={require("raw!./const_mutate.example")}
+            margin="20px auto"/>
+        </Slide>
+        <Slide bgColor="white" notes="yup, javascript...">
+          <Image width="50%" src={images.wat} />
+        </Slide>
+        <Slide bgColor="white" notes="but you will do it anyway, i know you will. so i want you to remember this...">
+          <Image width="50%" src={images.sad_animal} />
+        </Slide>
+        <Slide bgColor="white" notes="iterations encourage mutation. recursions encourage immutability">
+          <Heading size={4}>
+            No more for or while loops
+          </Heading>
+          <Image width="50%" src={images.recursion_doll} />
+        </Slide>
+        <Slide bgColor="white">
+          <Heading size={4}>Iteration</Heading>
+          <CodePane
+            lang="javascript"
+            textSize="30"
+            source={require("raw!./iteration.example")} />
+        </Slide>
+        <Slide bgColor="white">
+          <Heading size={4}>Recursion</Heading>
+          <CodePane
+            lang="javascript"
+            textSize="30"
+            source={require("raw!./recursion.example")} />
+        </Slide>
+        <Slide bgColor="white" notes="This next one may seem very straightforward, but i bet at least some of you may make the same mistake">
+          <Appear><Heading size={4}>No more random numbers</Heading></Appear>
+          <Appear><Text>(Unless it is absolutely necessary)</Text></Appear>
+          <Appear><CodePane
+            lang="javascript"
+            textSize="30"
+            source={require("raw!./random.example")} /></Appear>
+        </Slide>
+        <Slide bgColor="white"  notes="Now this will definitely occur if this is used accidentally">
+          <Text>When a thing that worked on Friday no longer works on Monday</Text>
+          <Image width="100%" height="100%" src={images.not_working} />
         </Slide>
         <Slide  bgColor="white" 
           notes="up to this point, we simply used JavaScript syntax. but if you want to take functional programming to another level on the front-end, you can use: ...">
@@ -453,14 +531,9 @@ export default class extends React.Component {
         <Slide bgColor="white" >
           <Image width="100%" src={images.expand_comfort} />
         </Slide>
-        <Slide bgColor="white"  transition={['slide']} 
-          notes="this is all i have, so if you wanna chat with any of these, or other interesting sciency things">
-          <Image height="20%" width="30%" margin="10" src={images.github}/>
-          <Image height="20%" width="30%" margin="10" src={images.bigbang}/>
-          <Image height="20%" width="30%" margin="10" src={images.reactjs}/>
-          <Image height="20%" width="30%" margin="10" src={images.fp}/>
-          <Image height="20%" width="30%" margin="10" src={images.lol}/>
-          <Image height="20%" width="30%" margin="10" src={images.mario8}/>
+        <Slide bgColor="white">
+          <Link textSize="50" href="http://www.meetup.com/utah-haskell/">Haskell Meetup</Link>
+          <Heading color="black" size={4}>http://www.meetup.com/utah-haskell/</Heading>
         </Slide>
         <Slide bgColor="white" >
           <Heading size={4}>https://github.com/ryoia/reactive-conf-slides</Heading>

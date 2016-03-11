@@ -1,0 +1,6 @@
+var number = 2;
+var sideEffect = function(n) {
+    number = n * 3;
+    return number * n;
+};
+sideEffect(3);
