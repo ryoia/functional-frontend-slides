@@ -396,7 +396,18 @@ export default class extends React.Component {
             textSize="30"
             source={require("raw!./higher_order_fn.example")} />
         </Slide>
-        <Slide  bgColor="white" 
+        <Slide bgColor="white">
+          <Heading size={2}>Testing</Heading>
+          <Text>
+            "QA engineer walks into a bar. Orders a beer. Orders 0 beers. Orders 9999999 beers. Orders a lizard. Orders -1 beers. Orders a sdferzdi"
+          </Text>
+        </Slide>
+        <Slide bgColor="white">
+          <Heading size={4}>Property-based Testing</Heading>
+          <Appear><Text>Example: Multiplication</Text></Appear>
+          <Appear><Text>Commutative, associative, etc</Text></Appear>
+        </Slide>
+        <Slide bgColor="white" 
           notes="up to this point, we simply used JavaScript syntax. but if you want to take functional programming to another level on the front-end, you can use: ...">
           <Heading size={4}>Tools beyond JavaScript</Heading>
             <Appear><Text textSize="60">ImmutableJS with ReactJS</Text></Appear>
